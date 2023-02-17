@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+/* Set the font family and size */
+body {
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+}
+
+/* Add spacing between elements */
+h1, select, button, table {
+	margin-bottom: 20px;
+}
+
+/* Customize the button styling */
+button {
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+	background-color: #0056b3;
+}
+
+/* Style the table */
+table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+th, td {
+	padding: 10px;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+th {
+	background-color: #f5f5f5;
+	font-weight: bold;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tr:hover {
+	background-color: #e6e6e6;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+}
+
+.pagination a {
+	margin: 0 5px;
+}
+
+/* Add a responsive design */
+@media ( max-width : 768px) {  
+	h1 {
+		font-size: 24px;
+	}
+	select {
+		font-size: 14px;
+	}
+	table {
+		font-size: 14px;
+	}
+}
