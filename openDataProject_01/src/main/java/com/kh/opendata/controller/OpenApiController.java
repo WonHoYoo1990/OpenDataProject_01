@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class OpenApiController {
 
-	public static final String SERVICEKEY = "공공데이터 서비스키";
+	public static final String SERVICEKEY = "개인 서비스키 입력";
 
+	// realtime_measurement_info
 	// JSON 형식으로 OPEN API 활용
 	@ResponseBody
 	@RequestMapping(value = "air.do", produces = "application/json; charset=UTF-8")
@@ -26,7 +27,7 @@ public class OpenApiController {
 		url += "?servicekey=" + SERVICEKEY; // 서비스키 추가
 		url += "&sidoName=" + URLEncoder.encode(location, "UTF-8"); // 지역명 추가(한글들어가면 인코딩 처리)
 		url += "&returnType=json"; // 리턴타입
-		url += "&numOfRows=10";// 한 페이지 결과 수
+		url += "&numOfRows=50";// 한 페이지 결과 수
 		url += "&pageNo=" + pageNo; // 페이지 번호
 
 		System.out.println(url);
