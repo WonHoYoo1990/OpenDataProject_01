@@ -12,5 +12,6 @@
 <body>
 </body>
 	<h1>여기는 인덱스</h1>
-	<jsp:forward page="WEB-INF/views/realtime_measurement_info.jsp"></jsp:forward>
+	
+	<jsp:forward page="WEB-INF/views/main.jsp"></jsp:forward>
 </html>

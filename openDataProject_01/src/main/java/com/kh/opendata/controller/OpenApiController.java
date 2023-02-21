@@ -14,7 +14,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class OpenApiController {
 
-	public static final String SERVICEKEY = "개인 서비스키 입력";
+	public static final String SERVICEKEY = "공공데이터 서비스키 입력";
+
+	// 메인페이지 이동
+	@RequestMapping(value = "mainPage.do")
+	public String mainPage() {
+		return "main";
+	}
+
+	// 시도별 실시간 측정정보 페이지 이동
+	@RequestMapping(value = "airPage.do")
+	public String airPage() {
+		return "realtime_measurement_info/realtime_measurement_info";
+	}
 
 	// realtime_measurement_info
 	// JSON 형식으로 OPEN API 활용
