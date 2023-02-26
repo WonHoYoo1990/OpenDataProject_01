@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class OpenApiController {
 
-	public static final String SERVICEKEY = "공공데이터 서비스키 입력";
+	public static final String SERVICEKEY = "dcg8Wgf1maRr%2Bgle3cHYHEcdecll%2BVyBBx5BtVh2HzVZcgufBC8hW%2F1ej%2FjxKwxOVlF6yquM99%2BRojUfu9W4Ug%3D%3D";
 
 	// 메인페이지 이동
 	@RequestMapping(value = "mainPage.do")
@@ -22,25 +22,53 @@ public class OpenApiController {
 		return "main";
 	}
 
-	// 시도별 실시간 측정정보 페이지 이동
-	@RequestMapping(value = "airPage.do")
-	public String airPage() {
-		return "realtime_measurement_info/realtime_measurement_info";
+	// 측정소별 대기정보 페이지 이동 (MsrstnAcctoRltmMesureDnsty)
+	@RequestMapping(value = "info10Page.do")
+	public String info10Page() {
+		return "AirKoreaInfo/AirKorea01/info10";
 	}
 
-	// realtime_measurement_info
+	// 시군구별 대기정보 페이지 이동
+	@RequestMapping(value = "info20Page.do")
+	public String info20Page() {
+		return "AirKoreaInfo/AirKorea02//info20";
+	}
+
+	// 시도별 실시간 측정정보 페이지 이동(CtprvnRltmMesureDnsty)
+	@RequestMapping(value = "info30Page.do")
+	public String info30Page() {
+		return "AirKoreaInfo/AirKorea03//info30";
+	}
+
+	// 통합대기환경지수 나쁨 이상 측정소 목록조회(UnityAirEnvrnIdexSnstiveAboveMsrstnList)
+	public String info40Page() {
+		return "AirKoreaInfo/AirKorea04/info40";
+	}
+
+	// 대기질 예보통보 조회(MinuDustFrcstDspth)
+	public String info50Page() {
+		return "AirKoreaInfo/AirKorea05/info50";
+	}
+
+	// 초미세먼지 주간예보 조회(MinuDustWeekFrcstDspth)
+	public String info60Page() {
+		return "AirKoreaInfo/AirKorea06/info60";
+	}
+
+	// 시군구별 대기정보 페이지 이동
 	// JSON 형식으로 OPEN API 활용
 	@ResponseBody
-	@RequestMapping(value = "air.do", produces = "application/json; charset=UTF-8")
-	public String airMethod(String location, int pageNo) throws IOException {
+	@RequestMapping(value = "info20.do", produces = "application/json; charset=UTF-8")
+	public String info20(String location, int pageNo) throws IOException {
 
 		// URL 작성
 		String url = "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty";
 		url += "?servicekey=" + SERVICEKEY; // 서비스키 추가
 		url += "&sidoName=" + URLEncoder.encode(location, "UTF-8"); // 지역명 추가(한글들어가면 인코딩 처리)
 		url += "&returnType=json"; // 리턴타입
-		url += "&numOfRows=50";// 한 페이지 결과 수
+		url += "&numOfRows=100";// 한 페이지 결과 수
 		url += "&pageNo=" + pageNo; // 페이지 번호
+		url += "&ver=1.0";
 
 		System.out.println(url);
 
@@ -111,4 +139,22 @@ public class OpenApiController {
 //		return responseText;
 //
 //	}
+
+	@ResponseBody
+	@RequestMapping(value = "MsrstnAcctoRltmMesureDnsty.do", produces = "application/json; charset=UTF-8")
+	// 측정소별 실시간 측정정보 조회
+	public void MsrstnAcctoRltmMesureDnsty(String location, int pageNo) throws IOException {
+
+		String url = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty";
+		url += "?serviceKey=" + SERVICEKEY; // 서비스키 추가
+		url += "&stationName=" + URLEncoder.encode(location, "UTF-8"); // 측정소명 추가(한글 때문에 인코딩처리)
+		url += "&dataTerm=DAILY"; // 요청 데이터기간(1일: DAILY, 1개월: MONTH, 3개월: 3MONTH)
+		url += "&returnType=json"; // xml 또는 json
+		url += "&numOfRows=100"; // 한페이지 결과수
+		url += "&pageNo=1"; // 페이지번호
+
+		System.out.println("url : " + url);
+
+	}
+
 }
