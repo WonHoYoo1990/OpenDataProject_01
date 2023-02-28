@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class OpenApiController {
 
-	public static final String SERVICEKEY = "dcg8Wgf1maRr%2Bgle3cHYHEcdecll%2BVyBBx5BtVh2HzVZcgufBC8hW%2F1ej%2FjxKwxOVlF6yquM99%2BRojUfu9W4Ug%3D%3D";
+	public static final String SERVICEKEY = "개인서비스키 입력";
 
 	// 메인페이지 이동
 	@RequestMapping(value = "mainPage.do")
