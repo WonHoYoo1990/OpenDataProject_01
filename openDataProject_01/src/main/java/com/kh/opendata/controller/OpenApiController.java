@@ -34,25 +34,40 @@ public class OpenApiController {
 		return "AirKoreaInfo/AirKorea02//info20";
 	}
 
-	// 시도별 실시간 측정정보 페이지 이동(CtprvnRltmMesureDnsty)
+	// 시도별 실시간 측정정보 페이지 이동(CtprvnRltmMesureDnsty) - 초미세먼지
 	@RequestMapping(value = "info30Page.do")
 	public String info30Page() {
 		return "AirKoreaInfo/AirKorea03//info30";
 	}
 
-	// 통합대기환경지수 나쁨 이상 측정소 목록조회(UnityAirEnvrnIdexSnstiveAboveMsrstnList)
-	public String info40Page() {
-		return "AirKoreaInfo/AirKorea04/info40";
+	// 시도별 실시간 측정정보 페이지 이동(CtprvnRltmMesureDnsty) - 미세먼지
+	@RequestMapping(value = "info31Page.do")
+	public String info31Page() {
+		return "AirKoreaInfo/AirKorea03/info31";
 	}
 
-	// 대기질 예보통보 조회(MinuDustFrcstDspth)
-	public String info50Page() {
-		return "AirKoreaInfo/AirKorea05/info50";
+	// 시도별 실시간 측정정보 페이지 이동(CtprvnRltmMesureDnsty) - 오존
+	@RequestMapping(value = "info32Page.do")
+	public String info32Page() {
+		return "AirKoreaInfo/AirKorea03/info32";
 	}
 
-	// 초미세먼지 주간예보 조회(MinuDustWeekFrcstDspth)
-	public String info60Page() {
-		return "AirKoreaInfo/AirKorea06/info60";
+	// 시도별 실시간 측정정보 페이지 이동(CtprvnRltmMesureDnsty) - 이산화질소
+	@RequestMapping(value = "info33Page.do")
+	public String info33Page() {
+		return "AirKoreaInfo/AirKorea03/info33";
+	}
+
+	// 시도별 실시간 측정정보 페이지 이동(CtprvnRltmMesureDnsty) - 일산화탄소
+	@RequestMapping(value = "info34Page.do")
+	public String info34Page() {
+		return "AirKoreaInfo/AirKorea03/info34";
+	}
+
+	// 시도별 실시간 측정정보 페이지 이동(CtprvnRltmMesureDnsty) - 아황산가스
+	@RequestMapping(value = "info35Page.do")
+	public String info35Page() {
+		return "AirKoreaInfo/AirKorea03/info35";
 	}
 
 	// 시군구별 대기정보 페이지 이동
@@ -68,7 +83,7 @@ public class OpenApiController {
 		url += "&returnType=json"; // 리턴타입
 		url += "&numOfRows=100";// 한 페이지 결과 수
 		url += "&pageNo=" + pageNo; // 페이지 번호
-		url += "&ver=1.0";
+		url += "&ver=1.3";
 
 		System.out.println(url);
 
@@ -102,58 +117,49 @@ public class OpenApiController {
 		return responseText;
 	}
 
-	// XML형식으로 openApi 활용하기
-//	@ResponseBody
-//	@RequestMapping(value = "air.do", produces = "text/xml; charset=UTF-8")
-//	public String method1(String location) throws IOException {
-//
-//		String url = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty";
-//		url += "?serviceKey=" + SERVICEKEY; // 서비스키 추가
-//		url += "&sidoName=" + URLEncoder.encode(location, "UTF-8"); // 지역명 추가(한글이 들어가면 인코딩처리를 해야한다)
-//		url += "&returnType=xml"; // 리턴 타입
-//		url += "&numOfRows=50"; // 결과 개수
-//
-//		// 작성된 url정보를 넣어 URL 객체 생성
-//		URL requestUrl = new URL(url);
-//
-//		// 생성된 URL 객체로 urlConnection 생성
-//		HttpURLConnection urlConnection = (HttpURLConnection) requestUrl.openConnection();
-//		urlConnection.setRequestMethod("GET");
-//
-//		// 전달받은 응답데이터를 읽어줄 스트림 연결(기반스트림을 얻어와 보조스트림을 생성한다)
-//		BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-//
-//		String responseText = "";
-//		String line;
-//		// br로 읽어온 데이터를 line변수에 넣고 더이상 읽을 데이터가 없을때까지 반복시키기
-//		while ((line = br.readLine()) != null) {
-//			responseText += line;
-//		}
-//
-//		// 자원반납 및 연결 해제
-//		br.close();
-//		urlConnection.disconnect();
-//
-//		System.out.println(responseText);
-//
-//		return responseText;
-//
-//	}
-
 	@ResponseBody
-	@RequestMapping(value = "MsrstnAcctoRltmMesureDnsty.do", produces = "application/json; charset=UTF-8")
-	// 측정소별 실시간 측정정보 조회
-	public void MsrstnAcctoRltmMesureDnsty(String location, int pageNo) throws IOException {
+	@RequestMapping(value = "info30.do", produces = "application/json; charset=UTF-8")
+	// 시도별 실시간 측정정보 페이지 이동(CtprvnRltmMesureDnsty) - 초미세먼지
+	public String info30(String location) throws IOException {
 
-		String url = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty";
-		url += "?serviceKey=" + SERVICEKEY; // 서비스키 추가
-		url += "&stationName=" + URLEncoder.encode(location, "UTF-8"); // 측정소명 추가(한글 때문에 인코딩처리)
-		url += "&dataTerm=DAILY"; // 요청 데이터기간(1일: DAILY, 1개월: MONTH, 3개월: 3MONTH)
-		url += "&returnType=json"; // xml 또는 json
-		url += "&numOfRows=100"; // 한페이지 결과수
-		url += "&pageNo=1"; // 페이지번호
+		System.out.println(location);
 
-		System.out.println("url : " + url);
+		// URL 작성
+		String url = "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty";
+		url += "?servicekey=" + SERVICEKEY; // 서비스키 추가
+		url += "&sidoName=" + URLEncoder.encode(location, "UTF-8"); // 지역명 추가(한글들어가면 인코딩 처리)
+		url += "&returnType=json"; // 리턴타입
+		url += "&numOfRows=650";// 한 페이지 결과 수
+		url += "&pageNo=1"; // 페이지 번호
+		url += "&ver=1.3";
+
+		System.out.println(url);
+
+		// 작성된 url 정보를 넣어 URL 객체 생성
+		URL requestURL = new URL(url);
+
+		// 생성된 URL 객체로 urlConnnection 생성
+		HttpURLConnection urlConnection = (HttpURLConnection) requestURL.openConnection();
+		urlConnection.setRequestMethod("GET");
+
+		// 전달받은 응답데이터를 읽어줄 스트림 연결(기반 스트림을 얻어와 보조 스트림을 생성)
+		BufferedReader bReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+
+		String responseText = "";
+		String line;
+
+		// bReader로 읽어온 데이터를 line 변수에 넣고 더이상 읽을 데이터가 없을때까지 반복
+		while ((line = bReader.readLine()) != null) {
+			responseText += line;
+		}
+
+		// 자원 반납 및 연결해제
+		bReader.close();
+		urlConnection.disconnect();
+
+		System.out.println("responseText : " + responseText);
+
+		return responseText;
 
 	}
 

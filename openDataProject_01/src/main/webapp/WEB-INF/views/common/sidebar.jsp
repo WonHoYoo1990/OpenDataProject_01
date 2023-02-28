@@ -42,7 +42,7 @@
 					</a>
 					<div class="collapse" id="collapseLayouts03" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="info30Page.do">초미세먼지 (PM-2.5) <a class="nav-link" href="layout-static.html">미세먼지 (PM-10) <a class="nav-link" href="layout-static.html">오존(O3)</a><a class="nav-link" href="layout-static.html">이산화질소(NO2) </a><a class="nav-link" href="layout-static.html">일산화탄소(CO) </a><a class="nav-link" href="layout-static.html">아황산가스(SO2) </a>
+							<a class="nav-link" href="info30Page.do">초미세먼지 (PM-2.5) <a class="nav-link" href="info31Page.do">미세먼지 (PM-10) <a class="nav-link" href="info32Page.do">오존(O3)</a><a class="nav-link" href="info33Page.do">이산화질소(NO2) </a><a class="nav-link" href="info34Page.do">일산화탄소(CO) </a><a class="nav-link" href="info35Page.do">아황산가스(SO2) </a>
 						</nav>
 					</div>
 					<div class="sb-sidenav-menu-heading">Addons</div>

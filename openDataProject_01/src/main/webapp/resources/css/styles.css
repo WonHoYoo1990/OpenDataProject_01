@@ -6277,9 +6277,13 @@ keyframes spinner-border {to { transform:rotate(360deg) /* rtl:ignore */;
 
 
 
+
+
 %
 {
 opacity
+
+
 
 
 
@@ -6305,7 +6309,11 @@ opacity
 
 
 
+
+
 1
+
+
 
 
 
@@ -6330,6 +6338,8 @@ transform
 
 
 
+
+
 :
 
 
@@ -6343,7 +6353,11 @@ transform
 
 
 
+
+
 none
+
+
 
 
 
@@ -6375,9 +6389,13 @@ keyframes spinner-grow { 0% {
 
 
 
+
+
 %
 {
 opacity
+
+
 
 
 
@@ -6403,7 +6421,11 @@ opacity
 
 
 
+
+
 1
+
+
 
 
 
@@ -6428,6 +6450,8 @@ transform
 
 
 
+
+
 :
 
 
@@ -6441,7 +6465,11 @@ transform
 
 
 
+
+
 none
+
+
 
 
 
@@ -11155,40 +11183,32 @@ html, body {
 	border-radius: 0.25rem !important;
 }
 
-
-
-
-
-
-
-
-
-.info20_main {
+.info_main {
 	border: 1px solid gray;
 	margin-left: 50px;
 	margin-right: 50px;
 	padding: 30px;
 }
 
-.info20_main .info20_main_div01 {
+.info_main .info_main_div01 {
 	font-family: 'NSRR', sans-serif;
 	font-size: 15px;
 	line-height: 150%;
 	color: #666;
 }
 
-.info20_main .info20_main_div02 {
+.info_main .info_main_div02 {
 	font-size: 20px;
 	padding-bottom: 30px;
 	border-bottom: 1px solid;
 }
 
-.info20_main .info20_main_div03 {
+.info_main .info_main_div03 {
 	font-size: 20px;
 	padding: 30px;
 }
 
-.info20_main .info20_main_div03 .info20_main_div04 {
+.info_main .info_main_div03 .info_main_div04 {
 	font-size: 20px;
 	margin-top: 15px;
 	border: 1px solid #666;
@@ -11201,7 +11221,7 @@ html, body {
 	margin-top: -35px;
 }
 
-.infoTable03 {
+.infoTable {
 	text-align: center;
 	width: 100%;
 	padding-right: 0px;
@@ -11211,13 +11231,17 @@ html, body {
 	border-bottom: 1px solid #666;
 }
 
-.infoTable03 table {
+.infoTable table {
 	width: 100%;
 	text-align: center;
 	border-top: 2px solid;
 }
 
-.infoTable03 table tbody tr:hover {
+.infoTable table thead{
+	background-color: #f0f4ef;
+}
+
+.infoTable table tbody tr:hover {
 	width: 100%;
 	text-align: center;
 	border: 1px solid;

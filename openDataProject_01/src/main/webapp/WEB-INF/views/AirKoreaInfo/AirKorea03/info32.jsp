@@ -24,7 +24,7 @@
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
 								  <path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 .5Zm4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10A.5.5 0 0 1 4 .5Zm-4 2A.5.5 0 0 1 .5 2h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm4 0a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5Zm-4 2A.5.5 0 0 1 .5 4h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5Zm-4 2A.5.5 0 0 1 .5 6h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Zm-4 2A.5.5 0 0 1 .5 8h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Zm-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5Zm-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm4 0a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5Zm-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5Z" />
 								</svg>
-								<b>시도별 대기정보 - 초미세먼지(PM2.5) </b>
+								<b>시도별 대기정보 - 오존(O3) </b>
 							</h4>
 
 							<p class='infoTime' align="right">
@@ -40,7 +40,7 @@
 								<thead>
 									<tr>
 										<th>관측지점</th>
-										<th>농도범위 (㎍/㎥)</th>
+										<th>농도범위 (ppm)</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -51,12 +51,12 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="info_main_div04" align="center" style="width: 500px; font-size: small;">
+						<div class="info_main_div04" align="center" style="width: 600px; font-size: small;">
 							<div>
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-dizzy-fill" viewBox="0 0 16 16">
 								  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM4.146 5.146a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 1 1 .708.708l-.647.646.647.646a.5.5 0 1 1-.708.708L5.5 7.207l-.646.647a.5.5 0 1 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 0-.708zm5 0a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708.708l-.647.646.647.646a.5.5 0 0 1-.708.708l-.646-.647-.646.647a.5.5 0 1 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 0-.708zM8 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
 								</svg>
-								범례 <img alt='good' src='./resources/assets/img/stat_01.png'> 좋음(0~15) <img alt='good' src='./resources/assets/img/stat_02.png'> 보통(16~35) <img alt='good' src='./resources/assets/img/stat_03.png'> 나쁨(36~75) <img alt='good' src='./resources/assets/img/stat_04.png'> 매우나쁨(76~)
+								범례 <img alt='good' src='./resources/assets/img/stat_01.png'> 좋음(0~0.03) <img alt='good' src='./resources/assets/img/stat_02.png'> 보통(0.031~0.09) <img alt='good' src='./resources/assets/img/stat_03.png'> 나쁨(0.091~0.150) <img alt='good' src='./resources/assets/img/stat_04.png'> 매우나쁨(0.151~)
 							</div>
 						</div>
 					</div>
@@ -95,24 +95,29 @@
 					  sidoObject[name] = itemObject.filter(item => item.sidoName === name);
 					});
 					
-					function calculateAveragePM25(sidoObject) { // 각 지역별 초미세먼지 평균 구하는 함수
+					function calculateAverageO3(sidoObject) { // 각 지역별 오존 평균 구하는 함수
 						
-						  var totalpm25Value = 0; // 전체 초미세먼지 값
+						  var totalO3Value = 0; // 전체 오존 값
 						  var count = 0;
 
 						  for (var i = 0; i < sidoObject.length; i++) {
-						    var pm25Value = sidoObject[i].pm25Value; // 각 지역의 [i]번째 초미세먼지 값
+						    var O3Value = Number(sidoObject[i].o3Value); // 각 지역의 [i]번째 오존 값
+						    
+						    if (isNaN(O3Value)) { // 통신장애일 경우 '-' 값을 '0'으로 치환
+						    	  O3Value = 0;
+					    	}
 
-						    if (pm25Value !== '-') {
-						      totalpm25Value += Math.floor(pm25Value); // 통신장애일 경우 '-' 값을 '0'으로 치환
+						    if (O3Value !== '-') { // 통신장애일 경우 '-' 값을 '0'으로 치환
+						      totalO3Value += O3Value; 
 						      count++;
 						    }
 						  }
-						  return count > 0 ? (totalpm25Value / count) : 0; // 통신장애일 경우 값을 0 반환 아닐 경우 초미세먼지값 반환
+						  
+						  return count > 0 ? (totalO3Value / count).toFixed(3) : 0; // 통신장애일 경우 값을 0 반환 아닐 경우 오존값 반환
 						}
 
-						var range = []; // 지역별 평균 초미세먼지 결과값 배열
-						var rangeGrade = []; // 지역별 평균 초미세먼지 등급 배열
+						var range = []; // 지역별 평균 오존 결과값 배열
+						var rangeGrade = []; // 지역별 평균 오존 등급 배열
 						
 						var gradeImg = ""; //등급별 이미지
 
@@ -122,21 +127,21 @@
 						var verybad = "<img alt='verybad' src='./resources/assets/img/stat_04.png'>";
  
 						sidoName.forEach(function(name) {
-						  var pm25val = Math.floor(calculateAveragePM25(sidoObject[name])); // 각 지역별 초미세먼지 평균 값
-						  range.push(pm25val);
+						  var O3val = Number(calculateAverageO3(sidoObject[name])); // 각 지역별 오존 평균 값
+						  range.push(O3val);
 						  
-							if ( 0<= pm25val && pm25val  <=15) {
+							if ( 0 <= O3val && O3val <=0.03) {
 								gradeImg = good;
-							} else if (15< pm25val && pm25val <=35) {
+							} else if (0.03 < O3val && O3val <=0.09) {
 								gradeImg = normal;
-							} else if (35< pm25val && pm25val <=75) {
+							} else if (0.09 < O3val && O3val <=0.150) {
 								gradeImg = bad;
-							} else if (75< pm25val ) {
+							} else if (0.150 < O3val ) {
 								gradeImg = verybad;
 							} else {
 								gradeImg = "통신 장애";
 							}
-
+							
 							rangeGrade.push(gradeImg);
 						  
 						});

@@ -22,10 +22,11 @@
 		<jsp:include page="../../common/sidebar.jsp"></jsp:include>
 
 		<div id="layoutSidenav_content">
+
 			<!-- main 시작 -->
-			<main class="info20_main">
-				<div class="info20_main_div01">
-					<div class="info20_main_div02">
+			<main class="info_main">
+				<div class="info_main_div01">
+					<div class="info_main_div02">
 						<label for="location">지역 </label> <select id="location">
 							<option>서울</option>
 							<option>경기</option>
@@ -47,7 +48,7 @@
 						</select>
 						<button id="btn1">검색</button>
 					</div>
-					<div class="info20_main_div03">
+					<div class="info_main_div03">
 						<div>
 							<h4 style="color: black;">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
@@ -64,8 +65,8 @@
 								기준
 							</p>
 						</div>
-						<div class="infoTable03">
-							<table id="result1">
+						<div class="infoTable">
+							<table id="infoTableResult">
 								<thead>
 									<tr>
 										<th>시군구명</th>
@@ -78,11 +79,14 @@
 									</tr>
 								</thead>
 								<tbody>
-
+									<!-- 로딩바 -->
+									<div id="div_load_image" style="position: absolute; top: 50%; left: 50%; width: 0px; height: 0px; z-index: 9999; background: #f0f0f0; filter: alpha(opacity = 50); opacity: alpha*0.5; margin: auto; padding: 0; text-align: center">
+										<img src="./resources/assets/img/loading.gif" style="width: 100px; height: 100px;">
+									</div>
 								</tbody>
 							</table>
 						</div>
-						<div class="info20_main_div04" align="center">
+						<div class="info_main_div04" align="center">
 							<div>
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-dizzy-fill" viewBox="0 0 16 16">
 								  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM4.146 5.146a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 1 1 .708.708l-.647.646.647.646a.5.5 0 1 1-.708.708L5.5 7.207l-.646.647a.5.5 0 1 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 0-.708zm5 0a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708.708l-.647.646.647.646a.5.5 0 0 1-.708.708l-.646-.647-.646.647a.5.5 0 1 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 0-.708zM8 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
@@ -101,9 +105,14 @@
 	<script type="text/javascript">
 		$(function() {
 
+			$("#div_load_image").hide();
 			console.clear();
 
 			$("#btn1").click(function() {
+
+				// 조회 중
+				$("#div_load_image").show();
+
 				var pageNo = 1; // 기본 페이지 번호는 1로 설정
 				fetchData(pageNo); // 페이지 번호에 해당하는 데이터 가져오기
 			});
@@ -120,31 +129,34 @@
 							},
 							success : function(result) {
 
+								// 조회 성공
+								$("#div_load_image").hide();
+
 								console.clear();
 
-								var itemArr = result.response.body.items;
-								var value = "";
-								var refTime = "";
+								var itemObject = result.response.body.items;
+								var value = ""; // ajax 결과값
+								var refTime = ""; //기준 시간
 
 								// stationName 필드를 기준으로 정렬
-								itemArr.sort(function(a, b) {
+								itemObject.sort(function(a, b) {
 									return a.stationName
 											.localeCompare(b.stationName);
 								});
+
+								var gradeImg = ""; //등급별 이미지
 
 								var good = "<img alt='good' src='./resources/assets/img/stat_01.png'>";
 								var normal = "<img alt='normal' src='./resources/assets/img/stat_02.png'>";
 								var bad = "<img alt='bad' src='./resources/assets/img/stat_03.png'>";
 								var verybad = "<img alt='verybad' src='./resources/assets/img/stat_04.png'>";
 
-								var gradeImg = "";
+								for (var i = 0; i < itemObject.length; i++) {
 
-								for (var i = 0; i < itemArr.length; i++) {
+									var item = itemObject[i]; //items에 i번째 인덱스에 있는 item(객체) 하나
 
-									var item = itemArr[i]; //items에 i번째 인덱스에 있는 item(객체) 하나
-
-									var grade = [];
-									var gradeImgArray = [];
+									var grade = []; // 각 인덱스 등급 배열
+									var gradeImgArray = []; // 등급별 이미지 배열
 
 									for (var j = 0; j < 6; j++) {
 
@@ -174,7 +186,6 @@
 										}
 
 										gradeImgArray.push(gradeImg);
-
 									}
 
 									value += "<tr>" + "<td>" + item.stationName
@@ -193,10 +204,10 @@
 											+ item.so2Value + "</td>" + "</tr>";
 								}
 
-								var refTime = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clock' viewBox='0 0 16 16'> <path d='M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z'/> <path d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z'/> </svg> "
+								refTime = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clock' viewBox='0 0 16 16'> <path d='M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z'/> <path d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z'/> </svg> "
 										+ item.dataTime + " 기준";
 
-								$("#result1>tbody").html(value);
+								$("#infoTableResult>tbody").html(value);
 								$(".infoTime").html(refTime);
 							},
 							error : function() {
