@@ -24,10 +24,28 @@ AJAX 호출이 응답을 반환하면 테이블에 데이터가 채워집니다.
 마지막으로 가져온 데이터가 테이블에 표시됩니다.
 
 ### 1. Initial Screen
-<img width="1279" alt="image" src="https://user-images.githubusercontent.com/109671963/219674743-c1150a6b-8131-4722-bb5a-77245c2ca51c.png">
+
+<h4>1-1</h4>
+<img width="955" alt="image" src="https://user-images.githubusercontent.com/109671963/224656860-54cf1cbb-8875-4005-b03e-8b0d6f9691a9.png">
+<h4>1-2</h4>
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/109671963/224656904-170738a2-b6d7-4707-b1c3-36e2f5257c1e.png">
+<h4>1-3</h4>
+<img width="958" alt="image" src="https://user-images.githubusercontent.com/109671963/224657043-e0d5a897-e495-4803-b2e7-21d3e9b9b718.png">
+
 
 ### 2. Click the air pollution button in the area to check the area information.
-<img width="1278" alt="image" src="https://user-images.githubusercontent.com/109671963/219674827-fd694914-a8ed-466b-be1e-b83dff1a92ed.png">
+<h4>2-1</h4>
+<img width="958" alt="image" src="https://user-images.githubusercontent.com/109671963/224657384-1a3d95f8-c828-490e-8969-5491bc869a37.png">
+<h4>2-2</h4>
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/109671963/224657453-4856a3e7-6b74-4ba5-8c9f-e35ab5551cbe.png">
+<h4>2-3</h4>
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/109671963/224657532-4c311092-eaeb-4ce1-b9f6-ce63ebcdb45a.png">
+
 
 ### 3. Retrieve data through Ajax after paging processing.
-<img width="1279" alt="image" src="https://user-images.githubusercontent.com/109671963/219674936-bd506472-261e-43fc-ab29-863966d322c2.png">
+<h4>3-1</h4>
+<img width="948" alt="image" src="https://user-images.githubusercontent.com/109671963/224658086-26c4e25f-84bb-4169-b35d-98454aa1a28c.png">
+<h4>3-2</h4>
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/109671963/224658134-7573f66b-6b5c-4354-95a8-5d4188518c7f.png">
+<h4>3-3</h4>
+<img width="958" alt="image" src="https://user-images.githubusercontent.com/109671963/224658190-b969b41f-6289-4f78-9d36-4664063476ac.png">
