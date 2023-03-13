@@ -6279,9 +6279,17 @@ keyframes spinner-border {to { transform:rotate(360deg) /* rtl:ignore */;
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -6311,7 +6319,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -6340,6 +6356,10 @@ transform
 
 
 
+
+
+
+
 :
 
 
@@ -6355,7 +6375,15 @@ transform
 
 
 
+
+
+
+
 none
+
+
+
+
 
 
 
@@ -6391,9 +6419,17 @@ keyframes spinner-grow { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -6423,7 +6459,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -6452,6 +6496,10 @@ transform
 
 
 
+
+
+
+
 :
 
 
@@ -6467,7 +6515,15 @@ transform
 
 
 
+
+
+
+
 none
+
+
+
+
 
 
 
@@ -11237,7 +11293,7 @@ html, body {
 	border-top: 2px solid;
 }
 
-.infoTable table thead{
+.infoTable table thead {
 	background-color: #f0f4ef;
 }
 
@@ -11247,3 +11303,5 @@ html, body {
 	border: 1px solid;
 	font-weight: bolder;
 }
+
+

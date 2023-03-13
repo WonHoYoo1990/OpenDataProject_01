@@ -140,8 +140,7 @@
 
 								// stationName 필드를 기준으로 정렬
 								itemObject.sort(function(a, b) {
-									return a.stationName
-											.localeCompare(b.stationName);
+									return a.stationName.localeCompare(b.stationName);
 								});
 
 								var gradeImg = ""; //등급별 이미지

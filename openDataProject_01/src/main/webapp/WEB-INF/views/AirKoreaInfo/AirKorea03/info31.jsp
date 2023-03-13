@@ -108,7 +108,7 @@
 						      count++;
 						    }
 						  }
-						  return count > 0 ? (totalpm10Value / count) : 0; // 통신장애일 경우 값을 0 반환 아닐 경우 미세먼지값 반환
+						  return count > 0 ? (totalpm10Value/count) : 0; // 통신장애일 경우 값을 0반환 아닐경우 미세먼지 값 반환
 						}
 
 						var range = []; // 지역별 평균 미세먼지 결과값 배열
